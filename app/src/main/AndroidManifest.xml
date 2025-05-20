@@ -3,6 +3,8 @@
     package="com.example.beatbox">
     <!-- Permissions -->
     <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" /> <!-- For API 33+ -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" 
+        android:maxSdkVersion="32" /> <!-- For API 32 and below -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" /> <!-- For API 33+ -->
@@ -24,6 +26,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Player Activity -->
+        <activity
+            android:name=".activities.PlayerActivity"
+            android:exported="false" />
 
         <!-- MusicPlayerService -->
         <service

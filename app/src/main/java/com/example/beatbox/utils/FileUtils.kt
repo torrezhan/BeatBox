@@ -12,11 +12,7 @@ object FileUtils {
         val trackList = mutableListOf<Track>()
         // Define the collection URI based on Android version
         val collection =
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                MediaStore.Audio.Media.getContentUri(MediaStore.VOLUME_EXTERNAL)
-            } else {
-                MediaStore.Audio.Media.EXTERNAL_CONTENT_URI
-            }
+            MediaStore.Audio.Media.getContentUri(MediaStore.VOLUME_EXTERNAL)
 
         // Define the columns we want to retrieve
         val projection = arrayOf(
@@ -64,8 +60,7 @@ object FileUtils {
                     )
 
                     // Create a Track object and add it to the list
-                    // Store the content URI as a String
-                    trackList.add(Track(title, artist, contentUri.toString()))
+                    trackList.add(Track(title, artist, contentUri))
                 }
             }
         } catch (e: Exception) {
